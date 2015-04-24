@@ -1,5 +1,6 @@
-package hello;
+package hello.impl;
 
+import hello.service.GreetingService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
  * To change this template use File | Settings | File Templates.
  */
 
-@Service
+//@Service
 public class GreetingServiceImpl implements GreetingService {
 
     public String getGreeting(String name){
