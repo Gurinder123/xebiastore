@@ -15,7 +15,12 @@ public class ProductService {
     @Autowired
     ProductDao productDao;
 
-    public void addProduct(Product product) {
-        productDao.save(product);
+    public boolean addProduct(Product product) {
+        Product product1 = productDao.save(product);
+        if (product1 != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

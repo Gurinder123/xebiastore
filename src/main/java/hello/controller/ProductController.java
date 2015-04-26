@@ -22,8 +22,12 @@ public class ProductController {
     @ResponseBody
     public String addProduct(@RequestParam(value = "productName", required = true) String productName, @RequestParam(value = "price", required = true) String price) {
         Product product = new Product(productName, price);
-        productService.addProduct(product);
-        return "master";
+        boolean checker = productService.addProduct(product);
+        if (checker) {
+            return "{success:true}";
+        } else {
+            return "{success:false}";
+        }
 
 
     }
