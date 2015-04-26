@@ -1,6 +1,7 @@
 package hello.controller;
 
 import hello.model.Product;
+import hello.model.UserStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,14 +20,15 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping("/product")
+    public
     @ResponseBody
-    public String addProduct(@RequestParam(value = "productName", required = true) String productName, @RequestParam(value = "price", required = true) String price) {
+    UserStatus addProduct(@RequestParam(value = "productName", required = true) String productName, @RequestParam(value = "price", required = true) String price) {
         Product product = new Product(productName, price);
         boolean checker = productService.addProduct(product);
         if (checker) {
-            return "{success:true}";
+            return new UserStatus("success");
         } else {
-            return "{success:false}";
+            return new UserStatus("failure");
         }
 
     }
@@ -34,10 +36,13 @@ public class ProductController {
 
     @RequestMapping("/delete")
     @ResponseBody
-    public String deleteProduct(@RequestParam(value = "productName", required = true) String productName, @RequestParam(value = "price", required = true) String price) {
+    public UserStatus deleteProduct(@RequestParam(value = "productName", required = true) String
+                                            productName, @RequestParam(value = "price", required = true) String price) {
         Product product = new Product(productName, price);
         productService.deleteProduct(product);
-        return "{success:true}";
+        return new UserStatus("success");
     }
 
 }
+
+

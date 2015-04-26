@@ -46,7 +46,7 @@ public class ProductControllerMockMVCTest {
     public void checkAddProduct() throws Exception {
 
         this.mvc.perform(get("/product/?productName=tv&price=100"))
-                .andExpect(content().string("{success:true}"));
+                .andExpect(content().string("{\"status\":\"success\"}"));
     }
 
     @Test
