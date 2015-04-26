@@ -37,13 +37,13 @@ public class LoginControllerMockMVCTest {
     public void checkValidUser() throws Exception {
 
         this.mvc.perform(get("/login/?name=Gurinder&password=singh"))
-                .andExpect(content().string("{success:true}"));
+                .andExpect(content().string("{\"status\":\"success\"}"));
     }
 
     @Test
     public void checkInValidUser() throws Exception {
 
         this.mvc.perform(get("/login/?name=master&password=master"))
-                .andExpect(content().string("{success:false}"));
+                .andExpect(content().string("{\"status\":\"failure\"}"));
     }
 }

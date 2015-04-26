@@ -5,6 +5,7 @@ package hello.controller;
  */
 
 import hello.model.User;
+import hello.model.UserStatus;
 import hello.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,14 +20,15 @@ public class LoginController {
     LoginService loginService;
 
     @RequestMapping("/login")
+    public
     @ResponseBody
-    public String greeting(@RequestParam(value = "name", required = true) String name, @RequestParam(value = "password", required = true) String password) {
+    UserStatus greeting(@RequestParam(value = "name", required = true) String name, @RequestParam(value = "password", required = true) String password) {
         User user = new User(name, password);
         boolean checker = loginService.checkUser(user);
         if (checker) {
-            return "{success:true}";
+            return new UserStatus("success");
         } else {
-            return "{success:false}";
+            return new UserStatus("failure");
         }
 
     }

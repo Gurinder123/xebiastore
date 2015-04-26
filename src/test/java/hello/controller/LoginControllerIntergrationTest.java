@@ -27,14 +27,14 @@ public class LoginControllerIntergrationTest {
 
     @Test
     public void checkValidUser() {
-        System.out.println(when().get("/login/?name=Gurinder&password=singh"));
         when().get("/login/?name=Gurinder&password=singh").then().
-               equals("{success:true}");
+                body("status", Matchers.is("success"));
     }
+
+
     @Test
     public void checkInvalidUser() {
-        System.out.println(when().get("/login/?name=Gurinder&password=singh"));
-        when().get("/login/?name=Gurinder&password=singh").then().
-                equals("{success:false}");
+        when().get("/login/?name=master&password=singh").then().
+                body("status", Matchers.is("failure"));
     }
 }
