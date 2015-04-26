@@ -14,4 +14,6 @@ import javax.transaction.Transactional;
 public interface ProductDao extends CrudRepository<Product, Long> {
 
     public Product findByPrice(Product product);
+
+    public Product findByProductName(String name);
 }

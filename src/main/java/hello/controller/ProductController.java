@@ -29,8 +29,15 @@ public class ProductController {
             return "{success:false}";
         }
 
-
     }
 
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String deleteProduct(@RequestParam(value = "productName", required = true) String productName, @RequestParam(value = "price", required = true) String price) {
+        Product product = new Product(productName, price);
+        productService.deleteProduct(product);
+        return "{success:true}";
+    }
 
 }

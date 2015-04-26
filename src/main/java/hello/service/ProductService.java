@@ -23,4 +23,10 @@ public class ProductService {
             return false;
         }
     }
+
+    public void deleteProduct(Product product) {
+        Product product1 = productDao.findByProductName(product.getProductName());
+        long id = product1.getId();
+        productDao.delete(id);
+    }
 }
