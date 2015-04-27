@@ -52,7 +52,6 @@ public class ProductControllerMockMVCTest {
         product.setProductName("mobile");
         product.setPrice("100");
         product.setId(4L);
-        productDao = Mockito.mock(ProductDao.class);
         Assert.assertEquals(true, productService.addProduct(product));
     }
 
@@ -65,5 +64,6 @@ public class ProductControllerMockMVCTest {
         productDao = Mockito.mock(ProductDao.class);
         Assert.assertEquals(true, productService.addProduct(product));
         productService.deleteProduct(product);
+        verify(productDao).delete(4L);
     }
 }
