@@ -22,7 +22,7 @@ public class LoginServiceImpl  implements LoginService {
 
     @Override
     public boolean verifyLoginRequest(User user) {
-//        boolean verify = false;
+
         String userName = user.getUsername();
         String password = "";
         User admin = loginDao.findByName(userName);
@@ -32,10 +32,8 @@ public class LoginServiceImpl  implements LoginService {
         }
 
         if(password != null  &&  user.getPassword().equals(password)){
-//            verify = true;
             return true;
         }
-
         return false;
     }
 }
