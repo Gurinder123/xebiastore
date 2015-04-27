@@ -4,9 +4,11 @@ import hello.Application;
 import hello.dao.ProductDao;
 import hello.model.Product;
 import hello.service.ProductService;
+import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -37,6 +39,8 @@ public class ProductControllerMockMVCTest {
     @Autowired
     ProductService productService;
 
+    ProductDao productDao;
+
     @Before
     public void setUp() {
         this.mvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
@@ -44,19 +48,22 @@ public class ProductControllerMockMVCTest {
 
     @Test
     public void checkAddProduct() throws Exception {
-
-        this.mvc.perform(get("/product/?productName=tv&price=100"))
-                .andExpect(content().string("{\"status\":\"success\"}"));
+        Product product = new Product();
+        product.setProductName("mobile");
+        product.setPrice("100");
+        product.setId(4L);
+        productDao = Mockito.mock(ProductDao.class);
+        Assert.assertEquals(true, productService.addProduct(product));
     }
 
     @Test
     public void checkDeleteProduct() throws Exception {
         Product product = new Product();
-        product.setProductName("fridge");
+        product.setProductName("laptop");
         product.setPrice("100");
-        ProductDao productDao = Mockito.mock(ProductDao.class);
-        when(productDao.findByProductName("fridge")).thenReturn(product);
+        product.setId(4L);
+        productDao = Mockito.mock(ProductDao.class);
+        Assert.assertEquals(true, productService.addProduct(product));
         productService.deleteProduct(product);
-        verify(productDao).findByProductName("fridge");
     }
 }
