@@ -1,5 +1,6 @@
-package hello.service;
+package hello.Impl;
 
+import hello.service.GreetingService;
 import org.springframework.stereotype.Service;
 
 @Service

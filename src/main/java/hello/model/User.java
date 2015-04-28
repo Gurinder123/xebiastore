@@ -12,12 +12,12 @@ import javax.persistence.*;
  * To change this template use File | Settings | File Templates.
  */
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private static long Id;
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   public long id;
 
 
     @NotNull
@@ -31,12 +31,7 @@ public class User {
         this.password = password;
     }
 
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long id) {
-        Id = id;
+    public User() {
     }
 
     public String getPassword() {
@@ -51,11 +46,7 @@ public class User {
         return username;
     }
 
-    public void setUserName(String userName) {
-        this.username = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
-
-
-
-
 }

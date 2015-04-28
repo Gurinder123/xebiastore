@@ -2,9 +2,9 @@ package hello.Impl;
 
 import hello.dao.LoginDao;
 import hello.model.User;
-import hello.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,18 +14,18 @@ import org.springframework.stereotype.Service;
  * To change this template use File | Settings | File Templates.
  */
 
-@Service("LoginService")
-public class LoginServiceImpl  implements LoginService {
+@Service
+public class LoginService{ //implements LoginService {
 
     @Autowired
     LoginDao loginDao;
 
-    @Override
+ //   @Override
     public boolean verifyLoginRequest(User user) {
 
         String userName = user.getUsername();
         String password = "";
-        User admin = loginDao.findByName(userName);
+       /* User admin = loginDao.findByName(userName);
 
         if(admin != null ){
             password = admin.getPassword();
@@ -33,7 +33,8 @@ public class LoginServiceImpl  implements LoginService {
 
         if(password != null  &&  user.getPassword().equals(password)){
             return true;
-        }
+        }*/
+
         return false;
     }
 }

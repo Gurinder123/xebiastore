@@ -1,10 +1,9 @@
 package hello.dao;
 
-//import org.springframework.transaction.annotation.Transactional;
-
 import hello.model.User;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.transaction.annotation.Transactional;
+import javax.transaction.Transactional;
+
 
 /**
  * Created with IntelliJ IDEA.

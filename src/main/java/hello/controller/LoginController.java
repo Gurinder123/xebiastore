@@ -1,7 +1,7 @@
 package hello.controller;
 
+import hello.Impl.LoginService;
 import hello.model.User;
-import hello.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,24 +23,21 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @RequestMapping(value = "/login" , method = RequestMethod.GET)
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView greeting(@RequestParam(value = "name", required = true) String username,
-                                 @RequestParam(value = "password", required = true) String password){
+                                 @RequestParam(value = "password", required = true) String password) {
 
         User admin = new User(username, password);
-        boolean verify = loginService.verifyLoginRequest(admin);
+        boolean verify = true;
+//        boolean verify = loginService.verifyLoginRequest(admin);
 
-        if(verify){
-            return new ModelAndView("successful");
-        }
-        else{
+        if (verify) {
+            return new ModelAndView("login success");
+        } else {
             return new ModelAndView("login error");
         }
     }
-
-
-
-
 
 
 }

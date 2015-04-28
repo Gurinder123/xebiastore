@@ -1,3 +1,4 @@
+/*
 package hello.controller;
 
 import hello.controller.Application;
@@ -16,9 +17,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+*/
 /**
  * Created by anshulsharma on 24/04/15.
- */
+ *//*
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
@@ -39,3 +42,4 @@ public class MockMvcTest {
                 .andExpect(content().string("greeting"));
     }
 }
+*/
